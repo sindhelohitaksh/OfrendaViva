@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OfrendaViva 🕯️🌼 — Día de los Muertos & Ghost in the Machine Séance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="mode-ofrenda">
+  <!-- Floating Petal / Spectral Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Papel Picado Festive Garland -->
+  <div class="papel-picado-banner" aria-hidden="true">
+    <div class="flag flag-pink">💀</div>
+    <div class="flag flag-orange">🌼</div>
+    <div class="flag flag-purple">🕯️</div>
+    <div class="flag flag-yellow">✨</div>
+    <div class="flag flag-green">🍞</div>
+    <div class="flag flag-blue">🌊</div>
+    <div class="flag flag-pink">💀</div>
+    <div class="flag flag-orange">🌼</div>
+    <div class="flag flag-purple">🕯️</div>
+    <div class="flag flag-yellow">✨</div>
+  </div>
+
+  <div class="wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="badge-row">
+        <span class="badge hf-badge">Hacktoberfest 2026</span>
+        <span class="badge theme-badge">Ghost in the Machine</span>
+        <span id="engineBadge" class="badge engine-badge">Checking AI Engine...</span>
+      </div>
+      <h1 class="main-title">OFRENDA VIVA</h1>
+      <p class="subtitle">A Sacred Digital Día de los Muertos Altar & Open-Weight AI Séance</p>
+      
+      <!-- Top Action Bar -->
+      <div class="action-bar">
+        <div class="mode-toggle-group">
+          <button id="modeToggleBtn" class="btn btn-secondary">
+            <span id="modeIcon">👻</span> Switch to <span id="modeName">Midnight Séance</span>
+          </button>
+        </div>
+        <div class="audio-control-group">
+          <button id="ambientAudioBtn" class="btn btn-icon" title="Toggle Ambient Wind & Chimes">
+            <span id="audioIcon">🔇</span> Ambient Sound: <span id="audioStatus">Muted</span>
+          </button>
+        </div>
+        <div class="export-group">
+          <button id="exportVaultBtn" class="btn btn-accent">
+            💾 Export Eternal Vault
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="content-grid">
+      <!-- Left Column: The 3-Tier Altar -->
+      <section class="altar-section">
+        <div class="altar-header">
+          <h2>🕯️ El Altar de Recuerdos</h2>
+          <button id="openAddModalBtn" class="btn btn-sm btn-primary">
+            + Place New Offering
+          </button>
+        </div>
+
+        <div class="altar-container">
+          <!-- Altar Arch of Marigolds -->
+          <div class="altar-arch">
+            <span class="arch-leaf">🌼</span>
+            <span class="arch-leaf">🌼</span>
+            <span class="arch-leaf">🌼</span>
+            <span class="arch-title">✨ Donde el Recuerdo Vive Para Siempre ✨</span>
+            <span class="arch-leaf">🌼</span>
+            <span class="arch-leaf">🌼</span>
+            <span class="arch-leaf">🌼</span>
+          </div>
+
+          <!-- Tier 1: Heaven / Portraits & Ancestral Spirits -->
+          <div class="altar-tier tier-1">
+            <div class="tier-label">Nivel I: El Cielo (Pioneers & Loved Ones)</div>
+            <div class="tier-items" id="tier1Container">
+              <!-- Injected dynamically -->
+            </div>
+          </div>
+
+          <!-- Tier 2: Earth / Sacred Elements & Food -->
+          <div class="altar-tier tier-2">
+            <div class="tier-label">Nivel II: La Tierra (Sacred Offerings & Sustenance)</div>
+            <div class="tier-items" id="tier2Container">
+              <!-- Injected dynamically -->
+            </div>
+          </div>
+
+          <!-- Tier 3: Underworld / Sugar Skulls & Mementos -->
+          <div class="altar-tier tier-3">
+            <div class="tier-label">Nivel III: El Inframundo (Sugar Skulls & Tokens of Life)</div>
+            <div class="tier-items" id="tier3Container">
+              <!-- Injected dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <div class="altar-footer-note">
+          <p>💡 <em>Click any candle to light or blow out the flame. Click any portrait to commune.</em></p>
+        </div>
+      </section>
+
+      <!-- Right Column: AI Séance & Calaverita Chamber -->
+      <section class="seance-section">
+        <div class="seance-card">
+          <div class="chamber-header">
+            <h2 id="chamberHeading">💀 The Literary Calaverita & Séance Chamber</h2>
+            <p id="chamberSubheading">Synthesize traditional rhyming verse, eternal epitaphs, or commune with computing ghosts using local open-weight AI.</p>
+          </div>
+
+          <div class="spirit-quick-selector">
+            <label>Commune with a Computing Pioneer:</label>
+            <div class="spirit-pills" id="spiritPills">
+              <button class="spirit-pill active" data-spirit="custom">Personal Loved One</button>
+              <button class="spirit-pill" data-spirit="ada_lovelace">Ada Lovelace</button>
+              <button class="spirit-pill" data-spirit="alan_turing">Alan Turing</button>
+              <button class="spirit-pill" data-spirit="grace_hopper">Grace Hopper</button>
+              <button class="spirit-pill" data-spirit="margaret_hamilton">Margaret Hamilton</button>
+            </div>
+          </div>
+
+          <form id="aiGenerationForm" class="ai-form">
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="spiritNameInput">Name of Soul / Spirit:</label>
+                <input type="text" id="spiritNameInput" placeholder="e.g. Abuelita Rosa, Ada Lovelace, etc." required>
+              </div>
+              <div class="form-group flex-1">
+                <label for="spiritRoleInput">Role or Bond:</label>
+                <input type="text" id="spiritRoleInput" placeholder="e.g. Beloved Grandmother, Pioneer, Mentor">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="spiritMemoriesInput">Treasured Memories / Legacy:</label>
+              <textarea id="spiritMemoriesInput" rows="2" placeholder="e.g. Teaching us how to garden, laughter on rainy afternoons, relentless dedication to truth..."></textarea>
+            </div>
+
+            <div class="form-row" id="favoriteRow">
+              <div class="form-group flex-1">
+                <label for="spiritFavoriteInput">Favorite Offerings / Foods / Items:</label>
+                <input type="text" id="spiritFavoriteInput" placeholder="e.g. Hot spiced Mexican hot chocolate, pan dulce, jazz records">
+              </div>
+            </div>
+
+            <div class="form-group" id="questionRow" style="display: none;">
+              <label for="seanceQuestionInput">Question for the Spirit:</label>
+              <input type="text" id="seanceQuestionInput" placeholder="e.g. What did you learn when facing impossible challenges?">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="synthesisKindSelect">Synthesis Style:</label>
+                <select id="synthesisKindSelect">
+                  <option value="calaverita">💀 Calaverita Literaria (Traditional Rhyming Verse)</option>
+                  <option value="epitaph">🕯️ Altar Epitaph (Sacred Eternal Tribute)</option>
+                  <option value="seance">👻 Midnight Séance Communion (Channel the Spirit)</option>
+                  <option value="ghost_story">🎃 Halloween Ghost Tale (Atmospheric Story)</option>
+                </select>
+              </div>
+              <div class="form-group flex-1">
+                <label for="aiEngineSelect">Inference Backend:</label>
+                <select id="aiEngineSelect">
+                  <option value="auto">⚡ Auto (Ollama Open-Weights with Offline Fallback)</option>
+                  <option value="ollama">🦙 Ollama Local (Gemma 2 / Llama 3)</option>
+                  <option value="builtin">📖 Built-in Open Heuristic Engine (100% Offline)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="generateBtn" class="btn btn-primary btn-block">
+                ✨ Conjure Verse Across the Veil ✨
+              </button>
+            </div>
+          </form>
+
+          <!-- Result Box -->
+          <div id="aiResultContainer" class="ai-result-card" style="display: none;">
+            <div class="result-header">
+              <span id="resultKindTag" class="badge">Verse Ready</span>
+              <span id="resultEngineTag" class="text-muted engine-tag">Engine: ...</span>
+              <div class="result-actions">
+                <button id="copyResultBtn" class="btn btn-xs btn-outline" title="Copy text">📋 Copy</button>
+                <button id="addToAltarBtn" class="btn btn-xs btn-accent" title="Add as dedicated altar tribute">🕯️ Place on Altar</button>
+              </div>
+            </div>
+            <div id="resultContent" class="parchment-content"></div>
+          </div>
+        </div>
+
+        <!-- Why Open Innovation Matters Box -->
+        <div class="info-card">
+          <h3>🌼 Why Open Innovation Matters Here</h3>
+          <p>
+            An ofrenda holds the most sacred, intimate artifacts of our lives: photographs of lost ancestors, heartfelt eulogies, and vulnerable family memories.
+          </p>
+          <ul class="info-list">
+            <li><strong>Sacred Privacy:</strong> No photos or grief notes are sent to corporate cloud servers for training or surveillance.</li>
+            <li><strong>Eternal Preservation:</strong> Cloud APIs shut down or hike prices; open-weight models (Gemma 2 / Llama 3) run on your machine forever with the internet off.</li>
+            <li><strong>Authentic Grief:</strong> Closed models enforce sanitized corporate disclaimers; open models allow culturally rich, respectful expressions of love and loss.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal: Add Custom Offering -->
+    <div id="addModal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3>🕯️ Place a Sacred Offering</h3>
+          <button id="closeModalBtn" class="close-btn">&times;</button>
+        </div>
+        <form id="addOfferingForm" class="modal-form">
+          <div class="form-group">
+            <label for="offeringTierSelect">Altar Tier:</label>
+            <select id="offeringTierSelect">
+              <option value="1">Tier I (Heaven): Portrait / Ancestor</option>
+              <option value="2">Tier II (Earth): Food / Sacred Element</option>
+              <option value="3">Tier III (Inframundo): Sugar Skull / Memento</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="offeringNameInput">Name of Offering or Person:</label>
+            <input type="text" id="offeringNameInput" required placeholder="e.g. Abuelo Mateo, Favorite Guitar, Copal">
+          </div>
+          <div class="form-group">
+            <label for="offeringRoleInput">Title / Subtitle:</label>
+            <input type="text" id="offeringRoleInput" placeholder="e.g. Beloved Craftsman, Sacred Bread, Teacher">
+          </div>
+          <div class="form-group">
+            <label for="offeringAvatarInput">Icon / Symbol (Emoji or Character):</label>
+            <input type="text" id="offeringAvatarInput" value="🕯️" maxlength="4">
+          </div>
+          <div class="form-group">
+            <label for="offeringNoteInput">Dedication / Meaning:</label>
+            <textarea id="offeringNoteInput" rows="2" placeholder="e.g. To light the path and celebrate the joy you gave us."></textarea>
+          </div>
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" id="offeringCandleCheck" checked> Include glowing candle
+            </label>
+          </div>
+          <div class="modal-actions">
+            <button type="button" id="cancelModalBtn" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary">Place on Altar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>
+        Built with heart for <strong>Hacktoberfest 2026: Week 4 (Ghost in the Machine)</strong> 
+        by <a href="https://dev.to/premsai5142" target="_blank" rel="noopener">Lohitaksh Sindhe (@premsai5142)</a>. 
+        Licensed under <a href="LICENSE" target="_blank">MIT</a>.
+      </p>
+      <p class="cultural-note">
+        <em>"La muerte no es el final; es solo el camino de regreso a casa."</em> — Dedicated in honor of Día de los Muertos and computing pioneers.
+      </p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

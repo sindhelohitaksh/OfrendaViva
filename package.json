@@ -1,0 +1,30 @@
+{
+  "name": "ofrendaviva",
+  "version": "1.0.0",
+  "description": "OfrendaViva 🕯️🌼: A Sacred, Local-First Día de los Muertos Altar & Ghost in the Machine Séance powered by Open-Weight AI (Gemma 2 / Llama 3)",
+  "main": "server.js",
+  "bin": {
+    "ghostshell": "./bin/ghost-shell.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "ghost": "node bin/ghost-shell.js",
+    "test": "node test/test-engine.js"
+  },
+  "keywords": [
+    "hacktoberfest",
+    "hf26challenge",
+    "open-source-ai",
+    "gemma",
+    "dia-de-los-muertos",
+    "ghost-in-the-machine",
+    "offline-first",
+    "local-ai",
+    "seance"
+  ],
+  "author": "Lohitaksh Sindhe <premsai5142>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
